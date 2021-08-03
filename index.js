@@ -10,6 +10,9 @@ app.use(expressLayouts);
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 
+// to store the data in database
+const db=require('./config/mongoose');
+
 // to use css and js files (middleware)
 app.use(express.static('assets'));
 
