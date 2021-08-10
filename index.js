@@ -10,6 +10,11 @@ const expressLayouts=require('express-ejs-layouts');
 // to store the data in database
 const db=require('./config/mongoose');
 
+// to require session cookie
+const session=require('express-session');
+const passport=require('passport');
+const LocalStrategy = require('./config/passport-local-strategy');
+
 // for parsing the data submitted through form
 // app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
@@ -24,15 +29,29 @@ app.use(expressLayouts);
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
 
-// use express router
-app.use('/',require('./routes'));
-// for every url require routes
+
 
 // to set view engine as ejs
 app.set('view engine', 'ejs');
 app.set('views', './view');
 
+app.use(session({
+    name: 'codeial',
+    // TODO change the secret before deployment in production mode
+    secret: 'blahsomething',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000 * 60 * 100)
+    }
+}));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
+// use express router
+app.use('/',require('./routes'));
+// for every url require routes 
 
 app.listen(port, function(err){
     if (err) {
