@@ -7,3 +7,4 @@ db.once('open', function() {
     console.log("successfully,we're connected to mongDB!");
   // we're connected!
 });
+module.exports=db;
