@@ -1,3 +1,4 @@
+const passport = require('passport');
 const User  = require('../models/user');
 
 module.exports.profile=function(req,res){
@@ -58,3 +59,10 @@ module.exports.create=function(req,res){
         //    todo later
         return res.redirect('/');
         }
+    module.exports.destroySession=function(req,res){
+            //    todo later
+            req.logout();
+            return res.redirect('back');
+            } 
+        
+        
