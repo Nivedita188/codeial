@@ -12,14 +12,27 @@ const db=require('./config/mongoose');
 
 // to require session cookie
 const session=require('express-session');
+// to require passport js
 const passport=require('passport');
 const LocalStrategy = require('./config/passport-local-strategy');
+// setting up mongo store for session cookies
 const MongoStore = require('connect-mongo')(session);
+// for setting scss
+const sassMiddleware = require('node-sass-middleware');
 
+app.use(sassMiddleware({
+    /* Options */
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix:  '/css'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));
 // for parsing the data submitted through form
 // app.use(express.urlencoded());
 app.use(express.urlencoded({ extended: true }));
 
+// using cookie
 app.use(cookieParser());
 
 // to use css and js files (middleware)
