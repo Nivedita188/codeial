@@ -1,0 +1,27 @@
+footer {
+  background-color: grey;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start; }
+  footer #copyright {
+    color: white;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    padding: 10px; }
+  footer ul {
+    list-style: none;
+    padding-right: 10px; }
+    footer ul li {
+      display: inline-block;
+      padding: 2px;
+      color: white;
+      font-size: 1.5rem;
+      padding-left: 4px; }
+      footer ul li a {
+        text-decoration: none;
+        transition: color 0.5s, border-bottom 4s; }
+      footer ul li a:hover {
+        color: red;
+        border-bottom: 1px solid white; }
